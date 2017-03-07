@@ -20,6 +20,7 @@ public class WaveView extends View {
 
 
     private ValueAnimator animator;
+    private int centerY;
 
     public WaveView(Context context) {
         super(context);
@@ -42,7 +43,14 @@ public class WaveView extends View {
 
     int measuredWidth;
     int measuredHeight;
+    /**
+     * 偏移量（X轴方向）
+     */
     int mOffset;
+    /**
+     * 振幅
+     */
+    private static final int AMPLITUDE = 50;
 
     private boolean start = false;
 
@@ -87,20 +95,27 @@ public class WaveView extends View {
         measuredWidth = manager.getDefaultDisplay().getWidth();
         measuredHeight = manager.getDefaultDisplay().getHeight();
         setMeasuredDimension(measuredWidth, measuredHeight);
+        //计算Y轴中心点
+        centerY = measuredHeight / 2;
     }
 
 
+    /**
+     * 本案例将屏幕的宽作为一个波长， 50是振幅
+     *
+     * @param canvas
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         path.reset();
-        int centerY = measuredHeight / 2;
-        int perWidth = measuredWidth / 4;
-        path.moveTo(-measuredWidth, centerY);
-        path.quadTo(-measuredWidth * 3 / 4 + mOffset, centerY + 50, -measuredWidth / 2 + mOffset, centerY);
-        path.quadTo(-measuredWidth * 1 / 4 + mOffset, centerY - 50, 0 + mOffset, centerY);
-        path.quadTo(measuredWidth / 4 + mOffset, centerY + 50, measuredWidth / 2 + mOffset, centerY);
-        path.quadTo(measuredWidth * 3 / 4 + mOffset, centerY - 50, measuredWidth + mOffset, centerY);
+        path.moveTo(-measuredWidth + mOffset, centerY);
+        //绘制屏幕左侧的一个周期的正弦波
+        path.quadTo(-measuredWidth * 3 / 4 + mOffset, centerY + AMPLITUDE, -measuredWidth / 2 + mOffset, centerY);
+        path.quadTo(-measuredWidth * 1 / 4 + mOffset, centerY - AMPLITUDE, 0 + mOffset, centerY);
+        //绘制屏幕中的一个周期的正弦波
+        path.quadTo(measuredWidth / 4 + mOffset, centerY + AMPLITUDE, measuredWidth / 2 + mOffset, centerY);
+        path.quadTo(measuredWidth * 3 / 4 + mOffset, centerY - AMPLITUDE, measuredWidth + mOffset, centerY);
         path.lineTo(measuredWidth, measuredHeight);
         path.lineTo(-measuredWidth, measuredHeight);
         path.close();

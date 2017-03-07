@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
 
-                //查看styles的属性配置
+                //查看styles的属性配置(进入是渐变动画，退出时爆炸动画)
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this).toBundle();
                 ActivityCompat.startActivity(MainActivity.this, new Intent(MainActivity.this, ScrollingActivity.class), bundle);
 
