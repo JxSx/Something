@@ -1,6 +1,12 @@
 # Something
 本项目针对开发过程中一些知识点或者新功能进行学习和调试。
 # 功能
+- 仿京东列表页页码弹框提示
+- BottomSheet用法
+- 水波纹动画
+- App更新框架使用
+- 共享元素
+# 效果
 ### 仿京东列表页页码弹框提示
 <br />
 ### BottomSheet用法
@@ -19,7 +25,7 @@
 ![正弦波](http://a3.att.hudong.com/58/09/01300000426763124749095982212.jpg)<br />
 
 ### App更新框架使用
-[LibUpgrade](https://github.com/Money888/LibUpgrade)
+[LibUpgrade](https://github.com/Money888/LibUpgrade)<br />
 ### 共享元素
 ![效果图](http://upload-images.jianshu.io/upload_images/93730-516666db8ef89d2f.gif?imageMogr2/auto-orient/strip)<br />
 [Android Transition Framework详解---超炫的动画框架](http://www.jianshu.com/p/e497123652b5)<br />

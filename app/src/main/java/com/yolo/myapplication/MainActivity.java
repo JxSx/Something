@@ -71,21 +71,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_jd_page_count:
-                openActvity(JDPageCountActivity.class);
+                openActivity(JDPageCountActivity.class);
                 break;
             case R.id.btn_bottom_sheet:
-                openActvity(BottomSheetDemoActivity.class);
+                openActivity(BottomSheetDemoActivity.class);
                 break;
             case R.id.btn_wave_view:
-                openActvity(WaveViewActivity.class);
+                openActivity(WaveViewActivity.class);
                 break;
             case R.id.btn_check_update:
-                openActvity(UpdateActivity.class);
+                openActivity(UpdateActivity.class);
                 break;
         }
     }
 
-    private void openActvity(Class clazz) {
+    private void openActivity(Class clazz) {
         startActivity(new Intent(this, clazz));
     }
 }
