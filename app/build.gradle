@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "com.yolo.myapplication"
@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -30,4 +33,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':LibUpgrade')
 //    compile 'com.github.john990:WaveView:v0.9'
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

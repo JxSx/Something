@@ -6,6 +6,7 @@
 - 水波纹动画
 - App更新框架使用
 - 共享元素
+- DataBinding使用
 # 效果
 ### 仿京东列表页页码弹框提示
 <br />
@@ -29,3 +30,10 @@
 ### 共享元素
 ![效果图](http://upload-images.jianshu.io/upload_images/93730-516666db8ef89d2f.gif?imageMogr2/auto-orient/strip)<br />
 [Android Transition Framework详解---超炫的动画框架](http://www.jianshu.com/p/e497123652b5)<br />
+
+### DataBinding使用
+1.文本内容<br />
+2.运算符使用<br />
+3.图片<br />
+4.点击事件<br />
+[DataBinding使用](http://blog.csdn.net/Jason847/article/details/60142116)

@@ -35,7 +35,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".jd.JDPageCountActivity" />
         <activity android:name=".waveview.WaveViewActivity" />
-        <activity android:name=".update.UpdateActivity"></activity>
+        <activity android:name=".update.UpdateActivity" />
+        <activity android:name=".databinding.DataBindingActivity"></activity>
     </application>
 
 </manifest>
