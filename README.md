@@ -19,6 +19,7 @@
 ![正弦波](http://a3.att.hudong.com/58/09/01300000426763124749095982212.jpg)<br />
 
 ### App更新框架使用
+[LibUpgrade](https://github.com/Money888/LibUpgrade)
 ### 共享元素
 ![效果图](http://upload-images.jianshu.io/upload_images/93730-516666db8ef89d2f.gif?imageMogr2/auto-orient/strip)<br />
 [Android Transition Framework详解---超炫的动画框架](http://www.jianshu.com/p/e497123652b5)<br />
