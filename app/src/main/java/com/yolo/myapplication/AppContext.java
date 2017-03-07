@@ -3,6 +3,8 @@ package com.yolo.myapplication;
 import android.app.Application;
 
 import com.cy.lib.upgrade.LibUpgradeInitializer;
+import com.yolo.myapplication.hook.HookUtil;
+import com.yolo.myapplication.hook.ProxyActivity;
 
 /**
  * @author: jiaxin
@@ -17,5 +19,14 @@ public class AppContext extends Application {
 
         LibUpgradeInitializer.init(this);
 
+
+        HookUtil hookUtil = new HookUtil(this, ProxyActivity.class);
+        try {
+            hookUtil.hookAms();
+
+            hookUtil.hookActivityThreadHandler();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

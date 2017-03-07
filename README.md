@@ -7,6 +7,8 @@
 - App更新框架使用
 - 共享元素
 - DataBinding使用
+- Hook入门
+    不在清单文件中配置Activity的情况下，利用Hook技术启动此Activity。
 # 效果
 ### 仿京东列表页页码弹框提示
 <br />
