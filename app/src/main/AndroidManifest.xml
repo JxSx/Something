@@ -37,7 +37,8 @@
         <activity android:name=".waveview.WaveViewActivity" />
         <activity android:name=".update.UpdateActivity" />
         <activity android:name=".databinding.DataBindingActivity" />
-        <activity android:name=".hook.ProxyActivity"></activity>
+        <activity android:name=".hook.ProxyActivity" />
+        <activity android:name=".rx.RxActivity"></activity>
     </application>
 
 </manifest>

@@ -8,7 +8,7 @@
 - 共享元素
 - DataBinding使用
 - Hook入门
-    不在清单文件中配置Activity的情况下，利用Hook技术启动此Activity。
+- RxJava2.0学习
 # 效果
 ### 仿京东列表页页码弹框提示
 <br />
@@ -39,3 +39,10 @@
 3.图片<br />
 4.点击事件<br />
 [DataBinding使用](http://blog.csdn.net/Jason847/article/details/60142116)
+
+### Hook入门
+不在清单文件中配置Activity的情况下，利用Hook技术启动此Activity。
+
+### RxJava2.0学习
+测试代码写在ExampleUnitTest中。
+[RxJava2.0学习笔记](http://www.jianshu.com/p/fb68dfeee66d)<br />

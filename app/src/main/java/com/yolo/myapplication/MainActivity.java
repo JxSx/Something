@@ -13,6 +13,7 @@ import com.yolo.myapplication.bottomsheet.BottomSheetDemoActivity;
 import com.yolo.myapplication.databinding.DataBindingActivity;
 import com.yolo.myapplication.hook.OtherActivity;
 import com.yolo.myapplication.jd.JDPageCountActivity;
+import com.yolo.myapplication.rx.RxActivity;
 import com.yolo.myapplication.update.UpdateActivity;
 import com.yolo.myapplication.waveview.WaveViewActivity;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnCheckUpdate = (Button) findViewById(R.id.btn_check_update);
         Button btnDataBinding = (Button) findViewById(R.id.btn_data_binding);
         Button btnHook = (Button) findViewById(R.id.btn_hook);
+        Button btnRx = (Button) findViewById(R.id.btn_Rx);
 
         btnJDPageCount.setOnClickListener(this);
         btnBottomSheet.setOnClickListener(this);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnCheckUpdate.setOnClickListener(this);
         btnDataBinding.setOnClickListener(this);
         btnHook.setOnClickListener(this);
+        btnRx.setOnClickListener(this);
 
 
         final FloatingActionButton button = (FloatingActionButton) findViewById(R.id.fab);
@@ -93,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_hook:
                 openActivity(OtherActivity.class);
+                break;
+            case R.id.btn_Rx:
+                openActivity(RxActivity.class);
                 break;
         }
     }

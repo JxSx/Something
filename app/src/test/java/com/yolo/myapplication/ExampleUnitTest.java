@@ -1,6 +1,23 @@
 package com.yolo.myapplication;
 
+import com.yolo.myapplication.databinding.Course;
+import com.yolo.myapplication.databinding.User;
+
 import org.junit.Test;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,8 +28,126 @@ import static org.junit.Assert.assertEquals;
  */
 public class ExampleUnitTest {
 
+
+    private static final String TAG = ExampleUnitTest.class.getSimpleName();
+
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+    }
+
+    @Test
+    public void testFlatMap() {
+        List<User> users = new ArrayList<>();
+        List<Course> courses = new ArrayList<>();
+        Course course = new Course();
+        course.setName("语文");
+        courses.add(course);
+
+        final User user = new User();
+        user.setAge(10);
+        user.setName("abc");
+        user.setGirl(true);
+        user.setCourses(courses);
+        users.add(user);
+
+
+
+
+        Observable.fromArray(users).subscribe(new Consumer<List<User>>() {
+            @Override
+            public void accept(@NonNull List<User> users) throws Exception {
+
+            }
+        });
+    }
+
+    @Test
+    public void testRx1() {
+        Flowable.fromArray("a").subscribe(new Subscriber<String>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+
+        Observable.fromArray("this", "is", "a", "sentence")
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(@NonNull String s) throws Exception {
+                        System.out.println(s);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        System.out.println(throwable.getMessage());
+                    }
+                }, new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        System.out.println("run");
+                    }
+                }, new Consumer<Disposable>() {
+                    @Override
+                    public void accept(@NonNull Disposable disposable) throws Exception {
+                        System.out.println("disposable");
+                    }
+                });
+    }
+
+    @Test
+    public void testRx() {
+        final String[] names = {"Jason", "Bob", "Coco"};
+        Observable.fromArray(names).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(@NonNull String s) throws Exception {
+                System.out.println("name:" + s);
+            }
+        });
+
+
+        Observable.fromArray("this", "is", "a", "sentence")
+                .map(new Function<String, String>() {
+                    @Override
+                    public String apply(@NonNull String s) throws Exception {
+                        System.out.println(TAG + ">>>" + s);
+                        return s.toUpperCase() + " ";
+                    }
+                })
+                .toList()
+                .map(new Function<List<String>, String>() {
+                    @Override
+                    public String apply(@NonNull List<String> strings) throws Exception {
+                        Collections.reverse(strings);
+                        return strings.toString();
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(@NonNull String s) throws Exception {
+                        System.out.println(s);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+
+                    }
+                });
     }
 }
