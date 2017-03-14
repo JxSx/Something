@@ -9,6 +9,7 @@
 - DataBinding使用
 - Hook入门
 - RxJava2.0学习
+- Scroller和View的事件分发
 
 # 效果
 ### [仿京东列表页页码弹框提示](http://www.jianshu.com/p/2049098946df)
@@ -48,3 +49,6 @@
 ### RxJava2.0学习
 测试代码写在ExampleUnitTest中。
 [RxJava2.0学习笔记](http://www.jianshu.com/p/fb68dfeee66d)<br />
+
+### Scroller和View的事件分发
+![布局](https://user-gold-cdn.xitu.io/2017/3/14/ea1b7b19bea3ddbac21f5d11fd711942)

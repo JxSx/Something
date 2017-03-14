@@ -72,6 +72,11 @@ public class FirstFrameLayout extends FrameLayout {
                 Log.i(TAG, "onTouchEvent>>>>UP");
                 break;
         }
-        return true;
+        return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void setOnTouchListener(OnTouchListener l) {
+        super.setOnTouchListener(l);
     }
 }

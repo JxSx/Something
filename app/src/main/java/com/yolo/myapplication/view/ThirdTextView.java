@@ -56,6 +56,6 @@ public class ThirdTextView extends TextView {
                 Log.i(TAG, "onTouchEvent>>>>UP");
                 break;
         }
-        return false;
+        return super.onTouchEvent(event);
     }
 }

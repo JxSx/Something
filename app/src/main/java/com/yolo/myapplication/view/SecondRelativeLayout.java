@@ -56,7 +56,7 @@ public class SecondRelativeLayout extends RelativeLayout {
                 Log.i(TAG, "onInterceptTouchEvent>>>>UP");
                 break;
         }
-        return super.onInterceptTouchEvent(ev);
+        return true;
     }
 
     @Override
@@ -72,6 +72,6 @@ public class SecondRelativeLayout extends RelativeLayout {
                 Log.i(TAG, "onTouchEvent>>>>UP");
                 break;
         }
-        return false;
+        return true;
     }
 }
