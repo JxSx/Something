@@ -9,9 +9,11 @@
 - DataBinding使用
 - Hook入门
 - RxJava2.0学习
+
 # 效果
-### 仿京东列表页页码弹框提示
-<br />
+### [仿京东列表页页码弹框提示](http://www.jianshu.com/p/2049098946df)
+![我是图片](http://upload-images.jianshu.io/upload_images/93730-1db66a2894c58ccb.gif?imageMogr2/auto-orient/strip)
+
 ### BottomSheet用法
 1.采用普通布局方式实现<br />
 2.采用Fragment实现
