@@ -38,7 +38,9 @@
         <activity android:name=".update.UpdateActivity" />
         <activity android:name=".databinding.DataBindingActivity" />
         <activity android:name=".hook.ProxyActivity" />
-        <activity android:name=".rx.RxActivity"></activity>
+        <activity android:name=".rx.RxActivity" />
+        <activity android:name=".view.Main2Activity" />
+        <activity android:name=".view.ViewDemoActivity"></activity>
     </application>
 
 </manifest>
