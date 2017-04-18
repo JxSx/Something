@@ -1,0 +1,104 @@
+package com.yolo.myapplication.viewpager;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.ViewStubCompat;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+
+/**
+ * @author: jiaxin
+ * @date: 2017-04-17 16:32
+ */
+
+/**
+ * 使用ViewPager+FragmentStatePagerAdapter+LazyFragment
+ * <p>
+ * LazyFragment根据生命周期来控制视图的缓存和数据的加载来实现懒加载的效果
+ * 注意：Fragment的生命周期每次都会重新执行，仅仅是控制onRealViewLoaded方法加载次数即可
+ *
+ * 如果需要控制Fragment声明周期只加载一次，则需要重写FragmentStatePagerAdapter{@link LazyFragmentPagerAdapter}
+ */
+public abstract class LazyFragment extends Fragment {
+
+    // Fragment的根View
+    private View mRootView;
+
+    // 检测声明周期中，是否已经构建视图
+    private boolean mViewCreated = false;
+
+    // 占位图
+    private ViewStubCompat mViewStub;
+
+    @Nullable
+    @Override
+    public final View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (mRootView != null) {
+            mViewCreated = true;
+            return mRootView;
+        }
+
+        final Context context = inflater.getContext();
+        FrameLayout root = new FrameLayout(context);
+        mViewStub = new ViewStubCompat(context, null);
+        mViewStub.setLayoutResource(getResId());
+        root.addView(mViewStub, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+        root.setLayoutParams(new ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.MATCH_PARENT, ViewGroup.MarginLayoutParams.MATCH_PARENT));
+
+        mRootView = root;
+
+        mViewCreated = true;
+        if (mUserVisible) {
+            realLoad();
+        }
+        return mRootView;
+    }
+
+    private boolean mUserVisible = false;
+
+    @Override
+    public final void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        mUserVisible = isVisibleToUser;
+        if (mUserVisible && mViewCreated) {
+            realLoad();
+        }
+    }
+
+    // 判断是否已经加载
+    private boolean mLoaded = false;
+
+    /**
+     * 控制只允许加载一次
+     */
+    private void realLoad() {
+        if (mLoaded) {
+            return;
+        }
+
+        mLoaded = true;
+        onRealViewLoaded(mViewStub.inflate());
+    }
+
+    @Override
+    public void onDestroyView() {
+        mViewCreated = false;
+        super.onDestroyView();
+    }
+
+    /**
+     * 获取真正的数据视图
+     *
+     * @return
+     */
+    protected abstract int getResId();
+
+    /**
+     * 当视图真正加载时调用
+     */
+    protected abstract void onRealViewLoaded(View view);
+}

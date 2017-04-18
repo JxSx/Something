@@ -33,7 +33,7 @@ public class DataBindingActivity extends Activity {
 
         binding.setImgUrl("http://image.uczzd.cn/14094444771339725257.png?id=0");
 
-        binding.setHandle(this);
+//        binding.setHandle(this);
     }
 
 

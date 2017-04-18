@@ -2,11 +2,18 @@ package com.yolo.myapplication;
 
 import com.yolo.myapplication.databinding.Course;
 import com.yolo.myapplication.databinding.User;
+import com.yolo.myapplication.proxy.IShopping;
+import com.yolo.myapplication.proxy.ShoppingImpl;
+import com.yolo.myapplication.proxy.ShoppingProxy;
 
 import org.junit.Test;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +25,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 
 import static org.junit.Assert.assertEquals;
 
@@ -32,8 +41,61 @@ public class ExampleUnitTest {
     private static final String TAG = ExampleUnitTest.class.getSimpleName();
 
     @Test
+    public void testOkHttp() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+                Request request = new Request.Builder()
+                        .url("http://www.baidu.com")
+                        .build();
+
+
+                OkHttpClient client = new OkHttpClient();
+
+                try {
+                    client.newCall(request).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+//            }
+//        }).start();
+    }
+
+
+    @Test
+    public void testProxy() {
+        ShoppingImpl impl = new ShoppingImpl();
+        ShoppingProxy proxy = new ShoppingProxy(impl);
+
+        proxy.buy("");
+
+
+        IShopping iShopping = (IShopping) Proxy.newProxyInstance(ShoppingImpl.class.getClassLoader(),
+                impl.getClass().getInterfaces(),
+                new ShoppingHandler(impl));
+        iShopping.buy("abc");
+    }
+
+    class ShoppingHandler implements InvocationHandler {
+
+        IShopping base;
+
+        public ShoppingHandler(IShopping base) {
+            this.base = base;
+        }
+
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            return method.invoke(base, args);
+        }
+    }
+
+    @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+
+        byte b = 1;
+        byte[] a = new byte[2];
     }
 
     @Test
@@ -50,8 +112,6 @@ public class ExampleUnitTest {
         user.setGirl(true);
         user.setCourses(courses);
         users.add(user);
-
-
 
 
         Observable.fromArray(users).subscribe(new Consumer<List<User>>() {

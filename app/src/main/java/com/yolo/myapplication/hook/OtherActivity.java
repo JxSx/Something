@@ -3,7 +3,11 @@ package com.yolo.myapplication.hook;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.TextView;
+
+import com.r0adkll.slidr.Slidr;
 
 /**
  * @author: jiaxin
@@ -21,5 +25,20 @@ public class OtherActivity extends Activity {
         textView.setTextColor(Color.RED);
 
         setContentView(textView);
+
+        handler.sendMessageDelayed(Message.obtain(), 3000);
+    }
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            System.out.print("aaaaaa");
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler=null;
     }
 }

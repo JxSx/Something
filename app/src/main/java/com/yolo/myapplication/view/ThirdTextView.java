@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.TextView;
+import android.view.View;
 
 /**
  * @author: jiaxin
  * @date: 2017-03-14 10:39
  */
 
-public class ThirdTextView extends TextView {
+public class ThirdTextView extends View {
 
     private static final String TAG = "ThirdTextView";
 

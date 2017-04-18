@@ -27,18 +27,17 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile project(':LibUpgrade')
+    //    compile 'com.github.john990:WaveView:v0.9'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
-    testCompile 'junit:junit:4.12'
-    compile project(':LibUpgrade')
-//    compile 'com.github.john990:WaveView:v0.9'
-
     compile 'com.github.bumptech.glide:glide:3.7.0'
-
-
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-// Because RxAndroid releases are few and far between, it is recommended you also
-// explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex.rxjava2:rxjava:2.0.6'
+    compile 'com.r0adkll:slidableactivity:2.0.5'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    testCompile 'junit:junit:4.12'
 }

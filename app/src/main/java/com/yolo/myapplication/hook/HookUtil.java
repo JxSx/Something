@@ -1,5 +1,6 @@
 package com.yolo.myapplication.hook;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -53,6 +54,12 @@ public class HookUtil {
         Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{iActivityManagerIntercept}, handler);
 
         mInstanceField.set(gDefaultValue, proxy);
+
+        ValueAnimator.ofInt().addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+            }
+        });
     }
 
     class AmsInvocationHandler implements InvocationHandler {
