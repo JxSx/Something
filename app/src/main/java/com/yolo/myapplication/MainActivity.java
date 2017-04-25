@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import com.yolo.myapplication.update.UpdateActivity;
 import com.yolo.myapplication.view.ViewDemoActivity;
 import com.yolo.myapplication.viewpager.ViewPagerActivity;
 import com.yolo.myapplication.waveview.WaveViewActivity;
+import com.yolo.myapplication.widget.BottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnRx = (Button) findViewById(R.id.btn_Rx);
         Button btnView = (Button) findViewById(R.id.btn_view);
         Button btn_viewpager = (Button) findViewById(R.id.btn_viewpager);
+        Button btn_bottom_dialog = (Button) findViewById(R.id.btn_bottom_dialog);
 
         btnJDPageCount.setOnClickListener(this);
         btnBottomSheet.setOnClickListener(this);
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnHook.setOnClickListener(this);
         btnView.setOnClickListener(this);
         btn_viewpager.setOnClickListener(this);
+        btn_bottom_dialog.setOnClickListener(this);
 
 
         final FloatingActionButton button = (FloatingActionButton) findViewById(R.id.fab);
@@ -110,6 +115,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_viewpager:
                 openActivity(ViewPagerActivity.class);
+                break;
+            case R.id.btn_bottom_dialog:
+                FragmentTransaction mFragTransaction = getSupportFragmentManager().beginTransaction();
+                Fragment fragment =  getSupportFragmentManager().findFragmentByTag("dialogFragment");
+                if(fragment!=null){
+                    //为了不重复显示dialog，在显示对话框之前移除正在显示的对话框
+                    mFragTransaction.remove(fragment);
+                }
+                BottomSheetDialog dialogFragment = BottomSheetDialog.newInstance();
+                dialogFragment.show(mFragTransaction, "dialogFragment");
                 break;
         }
     }
