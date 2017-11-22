@@ -2,12 +2,6 @@ package com.yolo.myapplication.update;
 
 import android.app.Activity;
 import android.os.Bundle;
-
-import com.cy.lib.upgrade.Updater;
-import com.cy.lib.upgrade.UpdaterConfiguration;
-import com.cy.lib.upgrade.callback.UpdateCheckCallback;
-import com.cy.lib.upgrade.model.UpdateInfo;
-import com.cy.upgrade.interfacedef.UpdateChecker;
 import com.yolo.myapplication.R;
 
 public class UpdateActivity extends Activity {
@@ -17,7 +11,7 @@ public class UpdateActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        final UpdaterConfiguration config = new UpdaterConfiguration();
+       /* final UpdaterConfiguration config = new UpdaterConfiguration();
         config.updateChecker(new UpdateChecker() {
             @Override
             public void check(UpdateCheckCallback callback) {
@@ -43,6 +37,6 @@ public class UpdateActivity extends Activity {
             }
         });
         Updater.getInstance().init(config);
-        Updater.getInstance().check(this);
+        Updater.getInstance().check(this);*/
     }
 }

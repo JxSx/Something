@@ -57,6 +57,7 @@ public class SecondRelativeLayout extends RelativeLayout {
                 break;
         }
         return super.onInterceptTouchEvent(ev);
+        //return true;
     }
 
     @Override

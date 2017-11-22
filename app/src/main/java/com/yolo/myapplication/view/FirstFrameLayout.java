@@ -73,6 +73,7 @@ public class FirstFrameLayout extends FrameLayout {
                 break;
         }
         return super.onTouchEvent(event);
+        //return true;
     }
 
     @Override

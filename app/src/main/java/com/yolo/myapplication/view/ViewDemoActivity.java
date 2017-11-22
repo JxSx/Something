@@ -17,7 +17,7 @@ public class ViewDemoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_demo);
 
-        Slidr.attach(this, getResources().getColor(R.color.colorPrimary),  getResources().getColor(R.color.colorPrimaryDark));
+        //Slidr.attach(this, getResources().getColor(R.color.colorPrimary),  getResources().getColor(R.color.colorPrimaryDark));
     }
 
     @Override
@@ -49,6 +49,7 @@ public class ViewDemoActivity extends Activity {
                 Log.i(TAG, "onTouchEvent>>>>UP");
                 break;
         }
-        return false;
+        //return false;
+        return super.onTouchEvent(event);
     }
 }
